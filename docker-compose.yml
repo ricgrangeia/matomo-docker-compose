@@ -16,6 +16,8 @@ services:
 
   app:
     image: matomo
+    build: .
+    pull_policy: build
     restart: always
     volumes:
 #     - ./config:/var/www/html/config:z
