@@ -1,5 +1,7 @@
 FROM matomo
 
+COPY config.ini.php /usr/src/matomo/config/config.ini.php
+
 RUN chown -R www-data:www-data /var/www/html
 # RUN find /var/www/html/tmp -type f -exec chmod 644 {}
 # RUN find /var/www/html/tmp -type d -exec chmod 755 {}
