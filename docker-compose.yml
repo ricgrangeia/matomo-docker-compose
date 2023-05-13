@@ -1,5 +1,11 @@
 version: "3"
 
+networks:
+  default:
+    name: matomo_default
+  external:
+    name: nginxproxymanager_default
+
 services:
   db:
     image: mariadb:10.11
@@ -13,6 +19,8 @@ services:
       - MARIADB_DISABLE_UPGRADE_BACKUP=1
     env_file:
       - ./db.env
+    networks:
+      - default
 
   app:
     image: matomo
@@ -29,6 +37,9 @@ services:
       - ./db.env
     ports:
       - 38080:80
+    networks:
+      - default
+      - external
 
 volumes:
   db:
